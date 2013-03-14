@@ -4,7 +4,7 @@ class FileDataObjectManager extends DataObjectManager
 {
 	public function __construct($controller, $name = null, $sourceClass = null, $fileFieldName = null, $fieldList = null, $detailFormFields = null, $sourceFilter = "", $sourceSort = "", $sourceJoin = "") 
 	{
-		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $souceFilter, $sourceSort, $sourceJoin);
+		parent::__construct($controller, $name, $sourceClass, $fieldList, $detailFormFields, $sourceFilter, $sourceSort, $sourceJoin);
 	}
 
 	
