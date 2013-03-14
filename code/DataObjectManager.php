@@ -10,11 +10,11 @@ class DataObjectManager extends FormField
 	function __construct($controller, $name = null, $sourceClass = null, $fieldList = null, $detailFormFields = null, $sourceFilter = "", $sourceSort = null, $sourceJoin = "") 
 	{
 		$title = FormField::name_to_label($name);
-		parent::__construct($name, $title, null);
+		parent::__construct($name, $title);
 		$this->grid = new GridField($name, $title, $controller->$name(), GridFieldConfig_RecordEditor::create());
-		$this->dataClass = $sourceClass;
+                $this->dataClass = $sourceClass;
 		if($fieldList) {
-			$this->grid->setDisplayFields($fieldList);
+			$this->grid->getConfig()->getComponentByType('GridFieldDataColumns')->setDisplayFields($fieldList);
 		}
 		elseif(!singleton($this->dataClass)->stat('summary_fields')) {
 			if($db = singleton($this->dataClass)->db()) {
@@ -73,13 +73,13 @@ class DataObjectManager extends FormField
 	
 	public function setConfirmDelete($bool) {	}
 	
-	public function Field() {
-		return $this->FieldHolder();
+	public function Field($properties = array()) {
+		return $this->FieldHolder($properties);
 	}
 
 
-	public function FieldHolder() {
-		return $this->grid->FieldHolder();
+	public function FieldHolder($properties = array()) {
+		return $this->grid->FieldHolder($properties);
 	}	
 
 
